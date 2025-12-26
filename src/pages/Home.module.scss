@@ -130,6 +130,10 @@
     }
 }
 
+.heroVisual {
+    position: relative;
+}
+
 .heroText {
     h1 {
         font-size: 2.5rem;
@@ -271,12 +275,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 20;
+    cursor: pointer;
 
     .buttonBg {
         width: 64px;
         height: 64px;
         border-radius: $radius-full;
-        background-color: rgba(white, 0.3);
+        background-color: rgba(11, 18, 32, 0.64);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -286,6 +292,7 @@
             width: 28px;
             height: 28px;
             color: white;
+            display: block;
         }
     }
 }

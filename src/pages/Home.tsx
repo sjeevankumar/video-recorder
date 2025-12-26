@@ -1,8 +1,13 @@
+import { useState } from "react"
 import { Link } from "react-router-dom"
 import { Button } from "../components"
+import Modal from "../components/ui/Modal"
+import VideoPlayer from "../components/VideoPlayer/VideoPlayer"
 import styles from "./Home.module.scss"
 
 export default function Home() {
+  const [demoOpen, setDemoOpen] = useState(false)
+
   return (
     <main className={styles.main}>
       <header className={styles.header}>
@@ -194,6 +199,20 @@ export default function Home() {
               <div className={styles.screenshotFrame}>
                 {/* Optionally, place a real screenshot here for extra realism */}
               </div>
+
+              {/* Play overlay for interactive demo */}
+              <div
+                className={styles.playButton}
+                role="button"
+                aria-label="Open demo"
+                onClick={() => setDemoOpen(true)}
+              >
+                <div className={styles.buttonBg}>
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                    <path d="M8 5v14l11-7z" fill="white" />
+                  </svg>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -295,6 +314,13 @@ export default function Home() {
       <footer className={styles.footer}>
         © {new Date().getFullYear()} Recordly — Built with ❤️
       </footer>
+      <Modal
+        open={demoOpen}
+        onClose={() => setDemoOpen(false)}
+        title="Live Demo"
+      >
+        <VideoPlayer src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" />
+      </Modal>
     </main>
   )
 }
