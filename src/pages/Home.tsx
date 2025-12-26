@@ -450,6 +450,67 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Pricing */}
+      <section className={styles.pricingSection} aria-label="Pricing">
+        <div className={styles.pricingInner}>
+          <div className={styles.sectionHeader}>
+            <h2 className={styles.howTitle}>Simple, transparent pricing</h2>
+            <p className={styles.testLead}>
+              Start free and upgrade only when you need advanced features.
+            </p>
+          </div>
+
+          <div className={styles.pricingGrid}>
+            <div className={`${styles.priceCard} ${styles.recommended}`}>
+              <div className={styles.priceBadge}>Free forever</div>
+              <div className={styles.priceTag}>
+                <span className={styles.priceAmount}>$0</span>
+                <span className={styles.pricePeriod}> / forever</span>
+              </div>
+              <ul className={styles.featureList}>
+                <li>Unlimited screen recordings</li>
+                <li>Local downloads</li>
+                <li>Privacy-first — no account required</li>
+              </ul>
+              <a href="/recorder" className={styles.priceCTA}>
+                Start free
+              </a>
+            </div>
+
+            <div className={styles.priceCard}>
+              <div className={styles.priceBadge}>Pro</div>
+              <div className={styles.priceTag}>
+                <span className={styles.priceAmount}>$8</span>
+                <span className={styles.pricePeriod}> / mo</span>
+              </div>
+              <ul className={styles.featureList}>
+                <li>Cloud uploads & share links</li>
+                <li>Longer recordings</li>
+                <li>Priority support</li>
+              </ul>
+              <a href="/recorder" className={styles.priceCTA}>
+                Get Pro
+              </a>
+            </div>
+
+            <div className={styles.priceCard}>
+              <div className={styles.priceBadge}>Enterprise</div>
+              <div className={styles.priceTag}>
+                <span className={styles.priceAmount}>Contact</span>
+              </div>
+              <ul className={styles.featureList}>
+                <li>Team management</li>
+                <li>SAML / SSO</li>
+                <li>Dedicated support</li>
+              </ul>
+              <a href="/contact" className={styles.priceCTA}>
+                Contact us
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <footer className={styles.footer}>
         © {new Date().getFullYear()} Recordly — Built with ❤️
       </footer>
