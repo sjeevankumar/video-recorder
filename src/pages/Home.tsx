@@ -311,6 +311,145 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Testimonials / Social Proof */}
+      <section className={styles.testimonialsSection} aria-label="Testimonials">
+        <div className={styles.testimonialsInner}>
+          <div className={styles.sectionHeader}>
+            <h2 className={styles.howTitle}>Trusted by teams and creators</h2>
+            <p className={styles.testLead}>
+              Recordly helps people capture clear walkthroughs, demos, and quick
+              updates — used by individuals and teams worldwide.
+            </p>
+          </div>
+
+          <div className={styles.logosRow}>
+            <a
+              href="https://github.com"
+              className={styles.logoItem}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="https://cdn.simpleicons.org/github/000000"
+                alt="GitHub logo"
+                width="84"
+                height="28"
+              />
+            </a>
+
+            <a
+              href="https://www.figma.com"
+              className={styles.logoItem}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="https://cdn.simpleicons.org/figma/000000"
+                alt="Figma logo"
+                width="84"
+                height="28"
+              />
+            </a>
+
+            <a
+              href="https://stripe.com"
+              className={styles.logoItem}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="https://cdn.simpleicons.org/stripe/000000"
+                alt="Stripe logo"
+                width="84"
+                height="28"
+              />
+            </a>
+
+            <a
+              href="https://vercel.com"
+              className={styles.logoItem}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="https://cdn.simpleicons.org/vercel/000000"
+                alt="Vercel logo"
+                width="84"
+                height="28"
+              />
+            </a>
+          </div>
+
+          <div className={styles.testimonialsGrid}>
+            <article className={styles.testimonialCard}>
+              <div className={styles.testimonialHeader}>
+                <div className={styles.avatar}>
+                  <img
+                    src="https://i.pravatar.cc/100?img=1"
+                    alt="Alex avatar"
+                  />
+                </div>
+                <div className={styles.authorMeta}>
+                  <div className={styles.authorName}>Alex</div>
+                  <div className={styles.authorRole}>Support Lead</div>
+                </div>
+              </div>
+              <div className={styles.stars} aria-hidden>
+                ★★★★☆
+              </div>
+              <blockquote className={styles.testimonialQuote}>
+                Recordly saved our support team hours every week — quick clips
+                explain complex issues far better than text.
+              </blockquote>
+            </article>
+
+            <article className={styles.testimonialCard}>
+              <div className={styles.testimonialHeader}>
+                <div className={styles.avatar}>
+                  <img
+                    src="https://i.pravatar.cc/100?img=2"
+                    alt="Priya avatar"
+                  />
+                </div>
+                <div className={styles.authorMeta}>
+                  <div className={styles.authorName}>Priya</div>
+                  <div className={styles.authorRole}>Product Manager</div>
+                </div>
+              </div>
+              <div className={styles.stars} aria-hidden>
+                ★★★★★
+              </div>
+              <blockquote className={styles.testimonialQuote}>
+                Fast, private, and reliable — I use it for product demos and
+                sharing feedback with my team.
+              </blockquote>
+            </article>
+
+            <article className={styles.testimonialCard}>
+              <div className={styles.testimonialHeader}>
+                <div className={styles.avatar}>
+                  <img
+                    src="https://i.pravatar.cc/100?img=3"
+                    alt="Marco avatar"
+                  />
+                </div>
+                <div className={styles.authorMeta}>
+                  <div className={styles.authorName}>Marco</div>
+                  <div className={styles.authorRole}>UX Designer</div>
+                </div>
+              </div>
+              <div className={styles.stars} aria-hidden>
+                ★★★★☆
+              </div>
+              <blockquote className={styles.testimonialQuote}>
+                No installs, works in the browser — perfect for quick
+                walkthroughs.
+              </blockquote>
+            </article>
+          </div>
+        </div>
+      </section>
+
       <footer className={styles.footer}>
         © {new Date().getFullYear()} Recordly — Built with ❤️
       </footer>
