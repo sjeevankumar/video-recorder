@@ -7,6 +7,30 @@ import styles from "./Home.module.scss"
 
 export default function Home() {
   const [demoOpen, setDemoOpen] = useState(false)
+  const [openFAQ, setOpenFAQ] = useState<number | null>(null)
+
+  const faqItems = [
+    {
+      q: "Is my recording private?",
+      a: "Yes — recordings are handled in-browser and downloaded locally by default. Pro/Enterprise offers optional cloud uploads with access controls.",
+    },
+    {
+      q: "Which platforms are supported?",
+      a: "Recordly works in modern desktop browsers (Chrome, Edge, Firefox, Safari). Mobile support varies by browser capabilities.",
+    },
+    {
+      q: "Do I need to install anything?",
+      a: "No installs or signups required for local recordings — just open the recorder and grant permissions when prompted.",
+    },
+    {
+      q: "How do I share recordings?",
+      a: "On the free plan you download videos locally. Pro adds cloud uploads and shareable links. Enterprise supports team workflows.",
+    },
+  ]
+
+  function toggleFAQ(i: number) {
+    setOpenFAQ(openFAQ === i ? null : i)
+  }
 
   return (
     <main className={styles.main}>
@@ -217,6 +241,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* FAQ moved below Pricing */}
 
       <section id="how" className={styles.howSection}>
         <h2 className={styles.howTitle}>How it works</h2>
@@ -507,6 +533,38 @@ export default function Home() {
                 Contact us
               </a>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section id="faq" className={styles.faqSection} aria-label="FAQ">
+        <div className={styles.faqInner}>
+          <h2 className={styles.howTitle}>Frequently asked questions</h2>
+          <div className={styles.faqList}>
+            {faqItems.map((item, idx) => (
+              <div className={styles.faqItem} key={idx}>
+                <button
+                  className={styles.faqQuestion}
+                  aria-expanded={openFAQ === idx}
+                  onClick={() => toggleFAQ(idx)}
+                >
+                  <span>{item.q}</span>
+                  <span className={styles.faqChevron}>
+                    {openFAQ === idx ? "−" : "+"}
+                  </span>
+                </button>
+
+                <div
+                  className={`${styles.faqAnswer} ${
+                    openFAQ === idx ? styles.open : ""
+                  }`}
+                  role="region"
+                >
+                  <p>{item.a}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
