@@ -613,7 +613,66 @@ export default function Home() {
       </section>
 
       <footer className={styles.footer}>
-        © {new Date().getFullYear()} Recordly — Built with ❤️
+        <div className={styles.footerInner}>
+          <div className={styles.footerBrand}>
+            <span className={styles.brandText}>Recordly</span>
+            <div className={styles.copy}>
+              © {new Date().getFullYear()} Recordly
+            </div>
+          </div>
+
+          <div className={styles.footerCols}>
+            <div className={styles.footerCol}>
+              <div className={styles.footerColTitle}>Docs</div>
+              <a href="/docs" className={styles.footerLink}>
+                Documentation
+              </a>
+              <a href="/api" className={styles.footerLink}>
+                API
+              </a>
+            </div>
+
+            <div className={styles.footerCol}>
+              <div className={styles.footerColTitle}>Support</div>
+              <a href="/help" className={styles.footerLink}>
+                Help Center
+              </a>
+              <a href="/contact" className={styles.footerLink}>
+                Contact
+              </a>
+            </div>
+
+            <div className={styles.footerCol}>
+              <div className={styles.footerColTitle}>Social</div>
+              <a
+                href="https://twitter.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.footerLink}
+              >
+                Twitter
+              </a>
+              <a
+                href="https://github.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.footerLink}
+              >
+                GitHub
+              </a>
+            </div>
+
+            <div className={styles.footerCol}>
+              <div className={styles.footerColTitle}>Legal</div>
+              <a href="/terms" className={styles.footerLink}>
+                Terms
+              </a>
+              <a href="/privacy" className={styles.footerLink}>
+                Privacy
+              </a>
+            </div>
+          </div>
+        </div>
       </footer>
       <Modal
         open={demoOpen}

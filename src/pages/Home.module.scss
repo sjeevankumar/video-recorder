@@ -600,6 +600,63 @@
     margin: 0;
 }
 
+/* Footer links layout */
+.footerInner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    gap: $space-lg;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 0 $space-lg;
+}
+
+.footerBrand {
+    display: flex;
+    flex-direction: column;
+    gap: $space-sm;
+}
+
+.footerBrand .brandText {
+    font-weight: $font-semibold;
+    color: $primary;
+    font-size: $text-lg;
+}
+
+.footerBrand .copy {
+    color: $text-secondary;
+    font-size: $text-sm;
+}
+
+.footerCols {
+    display: grid;
+    gap: $space-lg;
+    grid-template-columns: repeat(4, minmax(140px, 1fr));
+    flex: 1 1 0;
+}
+
+.footerCol {
+    display: flex;
+    flex-direction: column;
+    gap: $space-sm;
+}
+
+.footerColTitle {
+    font-weight: $font-semibold;
+    color: $text-default;
+}
+
+.footerLink {
+    color: $text-secondary;
+    font-size: $text-sm;
+    text-decoration: none;
+}
+
+.footerLink:hover {
+    color: $primary;
+}
+
 .logoItem {
     width: 84px;
     height: 28px;
@@ -1006,9 +1063,17 @@
 }
 
 .footer {
+    margin-top: $space-lg;
     padding: $space-xl $space-lg;
     font-size: $text-sm;
-    color: $text-secondary;
-    border-top: 1px solid $border;
-    text-align: center;
+    color: $text-default;
+    text-align: left;
+    background: linear-gradient(180deg, rgba($primary, 0.04), rgba($accent, 0.02));
+    border-top: 1px solid rgba($primary, 0.06);
+    box-shadow: 0 -10px 30px rgba(11, 18, 32, 0.03);
+    border-radius: $radius-lg $radius-lg 0 0;
+
+    @media (max-width: $breakpoint-md) {
+        text-align: center;
+    }
 }
