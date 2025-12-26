@@ -569,6 +569,49 @@ export default function Home() {
         </div>
       </section>
 
+      {/* About / Trust & Security */}
+      <section
+        id="about"
+        className={styles.aboutSection}
+        aria-label="About Trust and Security"
+      >
+        <div className={styles.aboutInner}>
+          <h2 className={styles.howTitle}>About — Trust & Security</h2>
+          <p className={styles.aboutText}>
+            Recordly is built by a small team focused on privacy-first recording
+            and sharing tools. We process recordings in the browser by default
+            so your media stays on your device unless you explicitly upload it.
+          </p>
+
+          <div className={styles.trustGrid}>
+            <div className={styles.trustItem}>
+              <h3>Privacy</h3>
+              <p>
+                We don't collect recordings or personal data without consent.
+                Review our <a href="/privacy">Privacy Policy</a> for details.
+              </p>
+            </div>
+
+            <div className={styles.trustItem}>
+              <h3>Security</h3>
+              <p>
+                Data in transit is encrypted (TLS). For cloud features we offer
+                access controls and secure storage. See our{" "}
+                <a href="/security">Security</a> page.
+              </p>
+            </div>
+
+            <div className={styles.trustItem}>
+              <h3>Compliance</h3>
+              <p>
+                We aim to meet industry best practices (SOC 2, GDPR where
+                applicable) and provide enterprise controls for teams.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <footer className={styles.footer}>
         © {new Date().getFullYear()} Recordly — Built with ❤️
       </footer>

@@ -553,6 +553,53 @@
     opacity: 0.9;
 }
 
+/* About / Trust & Security */
+.aboutSection {
+    padding: $space-2xl $space-lg;
+    background: linear-gradient(180deg, rgba($primary, 0.01), transparent);
+}
+
+.aboutInner {
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.aboutText {
+    color: $text-secondary;
+    margin-bottom: $space-lg;
+}
+
+.trustGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $space-lg;
+    margin-top: $space-md;
+
+    @media (min-width: $breakpoint-md) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.trustItem {
+    background: $surface;
+    border: 1px solid $border;
+    padding: $space-lg;
+    border-radius: $radius-lg;
+    text-align: left;
+}
+
+.trustItem h3 {
+    margin-bottom: $space-sm;
+    color: $text-default;
+}
+
+.trustItem p {
+    color: $text-secondary;
+    font-size: $text-sm;
+    margin: 0;
+}
+
 .logoItem {
     width: 84px;
     height: 28px;
