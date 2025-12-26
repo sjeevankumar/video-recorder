@@ -46,7 +46,7 @@
 
 .toggleLabel {
     &:hover .track {
-        background-color: darken($border, 5%);
+        background-color: #e2e8f0; /* fallback for darken($border, 5%) */
     }
 }
 

@@ -1,41 +1,37 @@
-// Import theme colors
-@use "./themes/blue" as blue-theme;
-@use "./themes/purple" as purple-theme;
-
-// CSS Custom Properties for dynamic theme switching
+/* Blue Theme (default) */
 :root {
-    // Blue Theme (default)
-    --primary: #{blue-theme.$primary};
-    --primary-light: #{blue-theme.$primary-light};
-    --primary-dark: #{blue-theme.$primary-dark};
-    --accent: #{blue-theme.$accent};
-    --accent-light: #{blue-theme.$accent-light};
-    --accent-dark: #{blue-theme.$accent-dark};
-    --danger: #{blue-theme.$danger};
-    --danger-light: #{blue-theme.$danger-light};
-    --danger-dark: #{blue-theme.$danger-dark};
-    --bg: #{blue-theme.$bg};
-    --surface: #{blue-theme.$surface};
-    --text-default: #{blue-theme.$text-default};
-    --text-secondary: #{blue-theme.$text-secondary};
-    --border: #{blue-theme.$border};
+    --primary: #2563eb;
+    --primary-light: #60a5fa;
+    --primary-dark: #1d4ed8;
+    --accent: #0891b2;
+    --accent-light: #06b6d4;
+    --accent-dark: #0e7490;
+    --danger: #dc2626;
+    --danger-light: #ef4444;
+    --danger-dark: #b91c1c;
+    --bg: #f0f9ff;
+    --surface: #ffffff;
+    --text-default: #0f172a;
+    --text-secondary: #64748b;
+    --border: #cbd5e1;
 }
 
+/* Purple Theme */
 [data-theme="purple"] {
-    --primary: #{purple-theme.$primary};
-    --primary-light: #{purple-theme.$primary-light};
-    --primary-dark: #{purple-theme.$primary-dark};
-    --accent: #{purple-theme.$accent};
-    --accent-light: #{purple-theme.$accent-light};
-    --accent-dark: #{purple-theme.$accent-dark};
-    --danger: #{purple-theme.$danger};
-    --danger-light: #{purple-theme.$danger-light};
-    --danger-dark: #{purple-theme.$danger-dark};
-    --bg: #{purple-theme.$bg};
-    --surface: #{purple-theme.$surface};
-    --text-default: #{purple-theme.$text-default};
-    --text-secondary: #{purple-theme.$text-secondary};
-    --border: #{purple-theme.$border};
+    --primary: #7c5dfa;
+    --primary-light: #9d84ff;
+    --primary-dark: #5b43d4;
+    --accent: #00c2a8;
+    --accent-light: #26dfc7;
+    --accent-dark: #009b87;
+    --danger: #ff4d4f;
+    --danger-light: #ff7875;
+    --danger-dark: #d32f2f;
+    --bg: #f8fafc;
+    --surface: #ffffff;
+    --text-default: #0b1220;
+    --text-secondary: #6b7280;
+    --border: #e5e7eb;
 }
 
 // Use CSS variables from the active theme

@@ -51,6 +51,6 @@ select {
     border-radius: $radius-full;
 
     &:hover {
-        background: darken($border, 10%);
+        background: #e2e8f0; /* fallback for darken($border, 10%) */
     }
 }

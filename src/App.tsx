@@ -1,6 +1,5 @@
 import { Link, Route, Routes } from "react-router-dom"
 import styles from "./App.module.scss"
-import ThemeSwitcher from "./components/ThemeSwitcher"
 import { useTheme } from "./contexts/ThemeContext"
 import Home from "./pages/Home"
 import NotFound from "./pages/NotFound"
@@ -15,7 +14,7 @@ function AppContent() {
         <nav className={styles.nav}>
           <Link to="/">Home</Link> | <Link to="/recorder">Recorder</Link>
         </nav>
-        <ThemeSwitcher />
+        {/* <ThemeSwitcher /> */}
       </header>
 
       <main className={styles.main}>
