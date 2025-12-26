@@ -1,0 +1,33 @@
+@use "./styles/theme" as *;
+
+.app {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.header {
+    padding: $space-md;
+    border-bottom: 1px solid $border;
+    background-color: $surface;
+
+    nav {
+        display: flex;
+        gap: $space-md;
+        font-size: $text-sm;
+
+        a {
+            color: $primary;
+            text-decoration: none;
+            @include transition();
+
+            &:hover {
+                color: $primary-dark;
+            }
+        }
+    }
+}
+
+.main {
+    flex: 1;
+}

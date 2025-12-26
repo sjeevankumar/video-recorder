@@ -1,0 +1,25 @@
+@use "../styles/theme" as *;
+
+.container {
+    padding: $space-xl;
+}
+
+.title {
+    font-size: $text-2xl;
+    font-weight: $font-semibold;
+    margin-bottom: $space-md;
+}
+
+.text {
+    color: $text-secondary;
+    margin-bottom: $space-md;
+}
+
+.link {
+    color: $primary;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}

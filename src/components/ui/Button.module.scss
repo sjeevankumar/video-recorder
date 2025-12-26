@@ -1,0 +1,48 @@
+@use "../../styles/theme" as *;
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    gap: $space-sm;
+    padding: $space-md $space-md;
+    border: none;
+    border-radius: $radius-md;
+    font-weight: $font-medium;
+    cursor: pointer;
+    outline: none;
+    @include transition(all);
+
+    &:focus {
+        box-shadow:
+            0 0 0 3px rgba($primary, 0.1),
+            0 0 0 5px rgba($primary, 0.3);
+    }
+
+    &.primary {
+        background-color: $primary;
+        color: $surface;
+        box-shadow: $shadow-md;
+
+        @include hover-brightness(0.95);
+        @include active-scale(0.95);
+
+        &:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+    }
+
+    &.secondary {
+        background-color: $surface;
+        color: $primary;
+        border: 1px solid $border;
+
+        @include hover-brightness(0.98);
+        @include active-scale(0.95);
+
+        &:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+    }
+}

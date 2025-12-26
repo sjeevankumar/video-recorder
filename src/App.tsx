@@ -1,19 +1,24 @@
 import { Link, Route, Routes } from "react-router-dom"
-import "./App.css"
+import styles from "./App.module.scss"
+import ThemeSwitcher from "./components/ThemeSwitcher"
+import { useTheme } from "./contexts/ThemeContext"
 import Home from "./pages/Home"
 import NotFound from "./pages/NotFound"
 import RecorderPage from "./pages/RecorderPage"
 
-const App = () => {
+function AppContent() {
+  const { theme } = useTheme()
+
   return (
-    <div>
-      <header style={{ padding: 12 }}>
-        <nav>
+    <div className={styles.app} data-theme={theme}>
+      <header className={styles.header}>
+        <nav className={styles.nav}>
           <Link to="/">Home</Link> | <Link to="/recorder">Recorder</Link>
         </nav>
+        <ThemeSwitcher />
       </header>
 
-      <main>
+      <main className={styles.main}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/recorder" element={<RecorderPage />} />
@@ -24,4 +29,4 @@ const App = () => {
   )
 }
 
-export default App
+export default AppContent

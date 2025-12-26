@@ -1,0 +1,123 @@
+@use "../../styles/theme" as *;
+
+.recorder {
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: $space-xl $space-lg;
+}
+
+.title {
+    font-size: $text-xl;
+    font-weight: $font-semibold;
+    margin-bottom: $space-md;
+}
+
+.controlBarContainer {
+    margin-bottom: $space-md;
+}
+
+.diagnostics {
+    font-size: $text-sm;
+    color: $text-secondary;
+    margin-bottom: $space-md;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $space-lg;
+
+    @media (min-width: $breakpoint-md) {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.livePreview {
+    position: relative;
+    background-color: black;
+    border-radius: $radius-lg;
+    overflow: hidden;
+    box-shadow: $shadow-card;
+}
+
+.liveVideo {
+    width: 100%;
+    height: 360px;
+    object-fit: cover;
+    background-color: black;
+}
+
+.webcamOverlay {
+    position: absolute;
+    bottom: $space-md;
+    right: $space-md;
+    width: 112px;
+    height: 80px;
+    border-radius: $radius-md;
+    border: 2px solid white;
+    box-shadow: $shadow-lg;
+    object-fit: cover;
+}
+
+.diagnosticsBadge {
+    position: absolute;
+    top: $space-sm;
+    right: $space-sm;
+    background-color: rgba(white, 0.8);
+    font-size: $text-xs;
+    color: #111827;
+    padding: $space-sm $space-sm;
+    border-radius: $radius-md;
+}
+
+.recordedSection {
+    h3 {
+        font-size: $text-lg;
+        font-weight: $font-medium;
+        margin-bottom: $space-sm;
+    }
+}
+
+.recordedVideo {
+    width: 100%;
+    border-radius: $radius-md;
+    box-shadow: $shadow-card;
+}
+
+.noRecording {
+    background-color: $surface;
+    border-radius: $radius-md;
+    padding: $space-md;
+    color: $text-secondary;
+}
+
+.actions {
+    margin-top: $space-md;
+    display: flex;
+    gap: $space-sm;
+
+    .downloadButton {
+        display: inline-flex;
+        align-items: center;
+        padding: $space-md;
+        border-radius: $radius-md;
+        background-color: $primary;
+        color: white;
+        border: none;
+        cursor: pointer;
+        @include transition();
+
+        &:hover:not(:disabled) {
+            background-color: $primary-dark;
+        }
+
+        &:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+    }
+}
+
+.hidden {
+    display: none;
+}

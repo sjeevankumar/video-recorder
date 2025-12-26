@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState } from "react"
+import { ControlBar } from "../index"
+import styles from "./Recorder.module.scss"
 
 export default function Recorder() {
   const mediaRecorderRef = useRef<MediaRecorder | null>(null)
@@ -21,6 +23,10 @@ export default function Recorder() {
     mic: 0,
     webcam: 0,
   })
+
+  const recordingStartRef = useRef<number | null>(null)
+  const intervalRef = useRef<number | null>(null)
+  const [timer, setTimer] = useState<string | null>(null)
 
   useEffect(() => {
     // attach the live stream to the preview video element
@@ -263,6 +269,14 @@ export default function Recorder() {
           rafRef.current = null
         }
 
+        // clear timer
+        if (intervalRef.current) {
+          window.clearInterval(intervalRef.current)
+          intervalRef.current = null
+        }
+        recordingStartRef.current = null
+        setTimer(null)
+
         // close audio context
         if (audioContextRef.current) {
           try {
@@ -279,6 +293,19 @@ export default function Recorder() {
 
         setRecording(false)
       }
+
+      // start timer
+      recordingStartRef.current = Date.now()
+      if (intervalRef.current) window.clearInterval(intervalRef.current)
+      intervalRef.current = window.setInterval(() => {
+        if (!recordingStartRef.current) return
+        const elapsed = Date.now() - recordingStartRef.current
+        const mm = Math.floor(elapsed / 60000)
+        const ss = Math.floor((elapsed % 60000) / 1000)
+        setTimer(
+          `${String(mm).padStart(2, "0")}:${String(ss).padStart(2, "0")}`
+        )
+      }, 250)
 
       recorder.start()
       setRecording(true)
@@ -303,6 +330,13 @@ export default function Recorder() {
         cancelAnimationFrame(rafRef.current)
         rafRef.current = null
       }
+
+      if (intervalRef.current) {
+        window.clearInterval(intervalRef.current)
+        intervalRef.current = null
+      }
+      recordingStartRef.current = null
+      setTimer(null)
 
       if (canvasStreamRef.current) {
         canvasStreamRef.current.getTracks().forEach((t) => t.stop())
@@ -357,73 +391,76 @@ export default function Recorder() {
   }
 
   return (
-    <div className="recorder" data-testid="recorder">
-      <h2>Screen Recorder</h2>
+    <div className={styles.recorder} data-testid="recorder">
+      <h2 className={styles.title}>Screen Recorder</h2>
 
-      <div className="controls">
-        <label style={{ marginRight: 12 }}>
-          <input
-            type="checkbox"
-            checked={includeWebcam}
-            onChange={(e) => setIncludeWebcam(e.target.checked)}
-            disabled={recording}
-          />{" "}
-          Include webcam
-        </label>
-
-        <button
-          onClick={startRecording}
-          disabled={recording}
-          aria-label="Start recording"
-        >
-          Start Recording
-        </button>
-        <button
-          onClick={stopRecording}
-          disabled={!recording}
-          aria-label="Stop recording"
-        >
-          Stop Recording
-        </button>
-        <button
-          onClick={downloadRecording}
-          disabled={!recordedUrl}
-          aria-label="Download recording"
-        >
-          Download
-        </button>
+      <div className={styles.controlBarContainer}>
+        <ControlBar
+          recording={recording}
+          onStart={() => startRecording()}
+          onStop={() => stopRecording()}
+          onDownload={() => downloadRecording()}
+          includeWebcam={includeWebcam}
+          setIncludeWebcam={(v) => setIncludeWebcam(v)}
+          timer={timer || undefined}
+        />
       </div>
 
-      <div style={{ marginTop: 8 }}>
-        <small>
-          Diagnostics — display audio: {diagnostics.displayAudio}, mic:{" "}
-          {diagnostics.mic}, webcam: {diagnostics.webcam}
-        </small>
+      <div className={styles.diagnostics}>
+        Diagnostics — display audio: {diagnostics.displayAudio}, mic:{" "}
+        {diagnostics.mic}, webcam: {diagnostics.webcam}
       </div>
 
-      <div className="previews" style={{ marginTop: 12 }}>
-        <div>
-          <h3>Live Preview</h3>
+      <div className={styles.grid}>
+        <div className={styles.livePreview}>
           <video
             ref={liveVideoRef}
             autoPlay
             playsInline
             muted
-            style={{ width: "100%", maxHeight: 360, background: "#000" }}
+            className={styles.liveVideo}
           />
+
+          {/* visible webcam preview overlay */}
+          {includeWebcam && (
+            <video
+              ref={webcamVideoRef}
+              autoPlay
+              playsInline
+              muted
+              className={styles.webcamOverlay}
+            />
+          )}
+
+          {/* small diagnostics badge */}
+          <div className={styles.diagnosticsBadge}>
+            🎧 {diagnostics.displayAudio}/{diagnostics.mic}
+          </div>
         </div>
 
-        <div style={{ marginTop: 12 }}>
+        <div className={styles.recordedSection}>
           <h3>Recorded</h3>
           {recordedUrl ? (
             <video
               src={recordedUrl}
               controls
-              style={{ width: "100%", maxHeight: 360 }}
+              className={styles.recordedVideo}
             />
           ) : (
-            <p>No recording yet — start a screen recording to see it here.</p>
+            <div className={styles.noRecording}>
+              No recording yet — start a screen recording to see it here.
+            </div>
           )}
+
+          <div className={styles.actions}>
+            <button
+              onClick={downloadRecording}
+              disabled={!recordedUrl}
+              className={styles.downloadButton}
+            >
+              Download
+            </button>
+          </div>
         </div>
       </div>
 
@@ -433,16 +470,9 @@ export default function Recorder() {
         autoPlay
         playsInline
         muted
-        style={{ display: "none" }}
+        className={styles.hidden}
       />
-      <video
-        ref={webcamVideoRef}
-        autoPlay
-        playsInline
-        muted
-        style={{ display: "none" }}
-      />
-      <canvas ref={canvasRef} style={{ display: "none" }} />
+      <canvas ref={canvasRef} className={styles.hidden} />
     </div>
   )
 }

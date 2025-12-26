@@ -1,0 +1,325 @@
+@use "../styles/theme" as *;
+
+.main {
+    min-height: 100vh;
+    background-color: $bg;
+    color: $text-default;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: $space-xl $space-lg;
+    border-bottom: 1px solid $border;
+}
+
+.logo {
+    font-weight: $font-semibold;
+    font-size: $text-lg;
+}
+
+.nav {
+    display: flex;
+    gap: $space-xl;
+
+    a {
+        font-size: $text-sm;
+        color: $primary;
+        font-weight: $font-medium;
+        text-decoration: none;
+        @include transition();
+
+        &:hover {
+            color: $primary-dark;
+        }
+    }
+}
+
+.heroSection {
+    padding: $space-2xl $space-lg;
+}
+
+.heroBg {
+    position: relative;
+    background: linear-gradient(to bottom, rgba($primary, 0.05), white, rgba($accent, 0.05));
+    border-radius: $radius-2xl;
+    padding: 2rem;
+    overflow: hidden;
+    border: 1px solid rgba($primary, 0.1);
+
+    @media (min-width: $breakpoint-lg) {
+        padding: 3rem;
+    }
+
+    .bgBlob1 {
+        position: absolute;
+        width: 224px;
+        height: 224px;
+        background: radial-gradient(circle, rgba($primary, 0.2), transparent);
+        border-radius: $radius-full;
+        filter: blur(48px);
+        left: -64px;
+        top: -64px;
+        pointer-events: none;
+    }
+
+    .bgBlob2 {
+        position: absolute;
+        width: 288px;
+        height: 288px;
+        background: radial-gradient(circle, rgba($accent, 0.15), transparent);
+        border-radius: $radius-full;
+        filter: blur(48px);
+        right: -96px;
+        bottom: -80px;
+        pointer-events: none;
+    }
+}
+
+.heroContent {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    align-items: center;
+    position: relative;
+    z-index: 10;
+
+    @media (min-width: $breakpoint-lg) {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.heroText {
+    h1 {
+        font-size: 3rem;
+        font-weight: $font-extrabold;
+        line-height: 1.2;
+        margin-bottom: $space-md;
+
+        @media (min-width: $breakpoint-md) {
+            font-size: 3.75rem;
+        }
+
+        .highlight {
+            color: $primary;
+        }
+    }
+
+    p {
+        color: $text-secondary;
+        font-size: $text-lg;
+        margin-bottom: $space-lg;
+    }
+}
+
+.heroActions {
+    display: flex;
+    align-items: center;
+    gap: $space-md;
+    margin-bottom: $space-lg;
+
+    a {
+        text-decoration: none;
+
+        &.secondaryButton {
+            display: inline-flex;
+            align-items: center;
+            padding: $space-md;
+            font-size: $text-sm;
+            color: $primary;
+            font-weight: $font-medium;
+            border-radius: $radius-md;
+            border: 1px solid rgba($primary, 0.2);
+            @include transition();
+
+            &:hover {
+                background-color: rgba($primary, 0.05);
+            }
+        }
+    }
+}
+
+.heroBadges {
+    display: flex;
+    gap: $space-md;
+    font-size: $text-sm;
+    align-items: center;
+    flex-wrap: wrap;
+
+    .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: $space-sm;
+        padding: $space-sm $space-md;
+        border-radius: $radius-full;
+        font-weight: $font-medium;
+
+        &.primary {
+            background-color: rgba($primary, 0.1);
+            color: $primary;
+        }
+
+        &.accent {
+            background-color: rgba($accent, 0.1);
+            color: $accent;
+        }
+    }
+}
+
+.demoBox {
+    background: linear-gradient(135deg, rgba($primary, 0.2), rgba($accent, 0.1));
+    border-radius: $radius-xl;
+    padding: $space-lg;
+    box-shadow: $shadow-card;
+    border: 1px solid rgba($primary, 0.1);
+}
+
+.demoContainer {
+    position: relative;
+    background: linear-gradient(135deg, $primary, $accent);
+    border-radius: $radius-lg;
+    overflow: hidden;
+    height: 256px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.demoText {
+    text-align: center;
+    color: white;
+
+    .title {
+        font-size: $text-lg;
+        font-weight: $font-semibold;
+    }
+
+    .subtitle {
+        font-size: $text-sm;
+        opacity: 0.9;
+        margin-top: $space-sm;
+    }
+}
+
+.playButton {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .buttonBg {
+        width: 64px;
+        height: 64px;
+        border-radius: $radius-full;
+        background-color: rgba(white, 0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        backdrop-filter: blur(8px);
+
+        svg {
+            width: 28px;
+            height: 28px;
+            color: white;
+        }
+    }
+}
+
+.demoDescription {
+    margin-top: $space-md;
+    font-size: $text-sm;
+    color: $text-secondary;
+
+    .highlight {
+        font-weight: $font-medium;
+        color: $primary;
+    }
+}
+
+.howSection {
+    padding: $space-2xl $space-lg;
+}
+
+.howTitle {
+    font-size: $text-2xl;
+    font-weight: $font-semibold;
+    margin-bottom: $space-lg;
+}
+
+.howGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $space-lg;
+
+    @media (min-width: $breakpoint-md) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.howCard {
+    background-color: $surface;
+    padding: $space-lg;
+    border-radius: $radius-lg;
+    box-shadow: $shadow-card;
+    position: relative;
+    border-left: 4px solid;
+
+    &.primary {
+        border-left-color: $primary;
+    }
+
+    &.accent {
+        border-left-color: $accent;
+    }
+
+    &.danger {
+        border-left-color: $danger;
+    }
+}
+
+.howCardIcon {
+    width: 40px;
+    height: 40px;
+    border-radius: $radius-md;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: $space-md;
+    font-size: 18px;
+
+    &.primary {
+        background-color: rgba($primary, 0.1);
+        color: $primary;
+    }
+
+    &.accent {
+        background-color: rgba($accent, 0.1);
+        color: $accent;
+    }
+
+    &.danger {
+        background-color: rgba($danger, 0.1);
+        color: $danger;
+    }
+}
+
+.howCardTitle {
+    font-weight: $font-semibold;
+    margin-bottom: $space-sm;
+    color: $text-default;
+}
+
+.howCardText {
+    font-size: $text-sm;
+    color: $text-secondary;
+}
+
+.footer {
+    padding: $space-xl $space-lg;
+    font-size: $text-sm;
+    color: $text-secondary;
+    border-top: 1px solid $border;
+    text-align: center;
+}

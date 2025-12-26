@@ -1,0 +1,8 @@
+@use "../../styles/theme" as *;
+
+.card {
+    background-color: $surface;
+    border-radius: $radius-lg;
+    box-shadow: $shadow-card;
+    padding: $space-md;
+}

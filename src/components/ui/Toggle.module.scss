@@ -1,0 +1,56 @@
+@use "../../styles/theme" as *;
+
+.toggleLabel {
+    display: inline-flex;
+    align-items: center;
+    gap: $space-sm;
+    cursor: pointer;
+    user-select: none;
+}
+
+.toggleContainer {
+    position: relative;
+
+    input {
+        display: none;
+    }
+
+    .track {
+        width: 2.75rem;
+        height: 1.5rem;
+        border-radius: $radius-full;
+        background-color: $border;
+        @include transition(background-color);
+    }
+
+    .thumb {
+        position: absolute;
+        top: 0.125rem;
+        left: 0.125rem;
+        width: 1.25rem;
+        height: 1.25rem;
+        background-color: $surface;
+        border-radius: $radius-full;
+        box-shadow: $shadow-md;
+        @include transition(transform);
+    }
+
+    input:checked ~ .track {
+        background-color: $primary;
+    }
+
+    input:checked ~ .thumb {
+        transform: translateX(1.25rem);
+    }
+}
+
+.toggleLabel {
+    &:hover .track {
+        background-color: darken($border, 5%);
+    }
+}
+
+.label {
+    font-size: $text-sm;
+    color: $text-secondary;
+}

@@ -1,0 +1,11 @@
+@use "../styles/theme" as *;
+
+.section {
+    padding: $space-xl;
+}
+
+.title {
+    font-size: $text-2xl;
+    font-weight: $font-semibold;
+    margin-bottom: $space-lg;
+}

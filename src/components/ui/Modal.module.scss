@@ -1,0 +1,38 @@
+@use "../../styles/theme" as *;
+
+.modal {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.backdrop {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 0;
+}
+
+.content {
+    background-color: $surface;
+    border-radius: $radius-lg;
+    box-shadow: $shadow-xl;
+    z-index: 10;
+    max-width: 32rem;
+    width: 100%;
+    padding: $space-xl;
+}
+
+.title {
+    font-size: $text-lg;
+    font-weight: $font-semibold;
+    margin-bottom: $space-sm;
+    color: $text-default;
+}
+
+.body {
+    color: $text-secondary;
+}

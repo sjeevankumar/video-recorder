@@ -1,0 +1,29 @@
+@use "../styles/theme" as *;
+
+.switcher {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.button {
+    padding: 0.5rem 1rem;
+    border: 1px solid $border;
+    background-color: $surface;
+    color: $text-default;
+    border-radius: $radius-md;
+    cursor: pointer;
+    font-size: $text-sm;
+    font-weight: $font-medium;
+    transition: all 0.2s ease;
+
+    &:hover {
+        background-color: darken($border, 5%);
+    }
+
+    &.active {
+        background-color: $primary;
+        color: white;
+        border-color: $primary;
+    }
+}
