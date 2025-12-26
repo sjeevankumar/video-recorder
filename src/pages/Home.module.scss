@@ -10,18 +10,58 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: $space-xl $space-lg;
+    padding: $space-md $space-lg;
     border-bottom: 1px solid $border;
 }
 
-.logo {
+.logoArea {
+    display: none;
+    align-items: center;
+    gap: $space-md;
+}
+
+.logoIcon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logoText {
+    font-weight: $font-extrabold;
+    font-size: 1.5rem;
+    letter-spacing: -0.02em;
+    color: $primary;
+}
+
+/* Header brand for compact header */
+.headerBrand {
+    display: flex;
+    align-items: center;
+}
+
+.brandLink {
+    display: inline-flex;
+    align-items: center;
+    gap: $space-sm;
+    text-decoration: none;
+}
+
+.brandIcon {
+    width: 32px;
+    height: 32px;
+}
+
+.brandText {
     font-weight: $font-semibold;
+    color: $primary;
     font-size: $text-lg;
 }
 
 .nav {
     display: flex;
-    gap: $space-xl;
+    gap: $space-lg;
 
     a {
         font-size: $text-sm;
@@ -92,18 +132,25 @@
 
 .heroText {
     h1 {
-        font-size: 3rem;
+        font-size: 2.5rem;
         font-weight: $font-extrabold;
-        line-height: 1.2;
-        margin-bottom: $space-md;
-
+        line-height: 1.15;
+        margin-bottom: $space-xs;
+        letter-spacing: -0.01em;
         @media (min-width: $breakpoint-md) {
-            font-size: 3.75rem;
+            font-size: 3.5rem;
         }
-
         .highlight {
             color: $primary;
         }
+    }
+
+    .tagline {
+        font-size: $text-base;
+        color: $primary-dark;
+        font-weight: $font-semibold;
+        margin-bottom: $space-md;
+        opacity: 0.85;
     }
 
     p {
@@ -138,6 +185,18 @@
             }
         }
     }
+    /* Hero illustration animations */
+    @keyframes heroFloat {
+        0% {
+            transform: translateY(0) rotate(0deg);
+        }
+        50% {
+            transform: translateY(-12px) rotate(2deg);
+        }
+        100% {
+            transform: translateY(0) rotate(0deg);
+        }
+    }
 }
 
 .heroBadges {
@@ -154,15 +213,19 @@
         padding: $space-sm $space-md;
         border-radius: $radius-full;
         font-weight: $font-medium;
-
+        background-color: rgba($primary, 0.08);
+        color: $primary;
         &.primary {
             background-color: rgba($primary, 0.1);
             color: $primary;
         }
-
         &.accent {
             background-color: rgba($accent, 0.1);
             color: $accent;
+        }
+        &.danger {
+            background-color: rgba($danger, 0.1);
+            color: $danger;
         }
     }
 }
@@ -249,13 +312,58 @@
 }
 
 .howGrid {
-    display: grid;
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
     gap: $space-lg;
+    position: relative;
 
     @media (min-width: $breakpoint-md) {
-        grid-template-columns: repeat(3, 1fr);
+        flex-direction: row;
+        gap: $space-xl;
+        justify-content: center;
+        align-items: stretch;
+
+        // connecting line between steps
+        &::before {
+            content: "";
+            position: absolute;
+            top: 3.75rem; // aligns with center of step badges
+            left: 8%;
+            right: 8%;
+            height: 2px;
+            background: linear-gradient(90deg, rgba($primary, 0.15), rgba($accent, 0.08));
+            z-index: 0;
+            border-radius: 2px;
+        }
     }
+}
+
+.howStep {
+    position: absolute;
+    top: $space-md;
+    left: $space-md;
+    width: 2.25rem;
+    height: 2.25rem;
+    background: $primary;
+    color: #fff;
+    border-radius: $radius-full;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: $font-bold;
+    font-size: $text-base;
+    box-shadow: $shadow-sm;
+    z-index: 2;
+
+    &.accent {
+        background: $accent;
+    }
+    &.danger {
+        background: $danger;
+    }
+    transition:
+        transform 160ms ease,
+        box-shadow 160ms ease;
 }
 
 .howCard {
@@ -265,29 +373,88 @@
     box-shadow: $shadow-card;
     position: relative;
     border-left: 4px solid;
+    min-height: 200px;
+    padding-top: 3rem;
+    flex: 1 1 0;
+    max-width: 420px;
+    transition:
+        transform 180ms ease,
+        box-shadow 180ms ease;
+    z-index: 1;
+
+    @media (min-width: $breakpoint-md) {
+        min-width: 300px;
+        max-width: 360px;
+    }
+
+    &:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 16px 30px rgba(11, 18, 32, 0.08);
+    }
 
     &.primary {
         border-left-color: $primary;
     }
-
     &.accent {
         border-left-color: $accent;
     }
-
     &.danger {
         border-left-color: $danger;
     }
 }
 
+/* Micro-interactions */
 .howCardIcon {
-    width: 40px;
-    height: 40px;
-    border-radius: $radius-md;
+    transition:
+        background-color 180ms ease,
+        color 180ms ease,
+        transform 180ms ease;
+}
+
+.howCard:hover .howCardIcon {
+    background-color: var(--primary);
+    color: #fff;
+    transform: translateY(-4px) scale(1.03);
+}
+
+.howCard.primary:hover .howCardIcon {
+    background-color: $primary;
+}
+.howCard.accent:hover .howCardIcon {
+    background-color: $accent;
+}
+.howCard.danger:hover .howCardIcon {
+    background-color: $danger;
+}
+
+.howCard:hover .howStep {
+    transform: scale(1.08) translateY(-4px);
+}
+
+.heroActions a.secondaryButton {
+    color: $primary;
+    text-decoration: none;
+    transition:
+        color 160ms ease,
+        transform 160ms ease;
+}
+
+.heroActions a.secondaryButton:hover {
+    color: $primary-dark;
+    transform: translateY(-2px);
+}
+
+.howCardIcon {
+    width: 56px;
+    height: 56px;
+    border-radius: $radius-full;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: $space-md;
-    font-size: 18px;
+    font-size: 20px;
+    flex-shrink: 0;
+    box-shadow: 0 6px 18px rgba(11, 18, 32, 0.04);
 
     &.primary {
         background-color: rgba($primary, 0.1);
@@ -305,6 +472,12 @@
     }
 }
 
+/* Arrange icon + content cleanly */
+.howCard > .howCardIcon + .howCardTitle,
+.howCard > .howCardIcon + .howCardText {
+    margin-left: 0;
+}
+
 .howCardTitle {
     font-weight: $font-semibold;
     margin-bottom: $space-sm;
@@ -314,6 +487,100 @@
 .howCardText {
     font-size: $text-sm;
     color: $text-secondary;
+}
+
+/* Hero illustration animations */
+@keyframes heroFloat {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-12px) rotate(2deg);
+    }
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+}
+
+@keyframes blobDrift {
+    0% {
+        transform: translateY(0) translateX(0) scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: translateY(-18px) translateX(8px) scale(1.03);
+        opacity: 0.96;
+    }
+    100% {
+        transform: translateY(0) translateX(0) scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes playPulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.08);
+        opacity: 0.92;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.bgBlob1 {
+    animation: blobDrift 9s ease-in-out infinite;
+    transform-origin: center;
+}
+
+.bgBlob2 {
+    animation: blobDrift 11s ease-in-out infinite;
+    transform-origin: center;
+    animation-delay: 1.2s;
+}
+
+.demoContainer {
+    animation: heroFloat 7s ease-in-out infinite;
+}
+
+.playButton .buttonBg {
+    animation: playPulse 2.6s ease-in-out infinite;
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .bgBlob1,
+    .bgBlob2,
+    .demoContainer,
+    .playButton .buttonBg {
+        animation: none !important;
+    }
+}
+
+/* Scoped animations targeting elements rendered in Home.tsx */
+.heroBg .bgBlob1 {
+    animation: blobDrift 9s ease-in-out infinite;
+}
+
+.heroBg .bgBlob2 {
+    animation: blobDrift 11s ease-in-out infinite;
+    animation-delay: 1.2s;
+}
+
+.heroVisual .illustration {
+    animation: heroFloat 7s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .heroBg .bgBlob1,
+    .heroBg .bgBlob2,
+    .heroVisual .illustration {
+        animation: none !important;
+    }
 }
 
 .footer {

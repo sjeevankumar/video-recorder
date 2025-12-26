@@ -1,25 +1,56 @@
 @use "../styles/theme" as *;
 
 .container {
-    padding: $space-xl;
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: $space-2xl $space-md;
+    text-align: center;
+}
+
+.icon {
+    margin-bottom: $space-lg;
+    svg {
+        display: block;
+        margin: 0 auto;
+    }
 }
 
 .title {
-    font-size: $text-2xl;
+    font-size: 3rem;
+    font-weight: $font-extrabold;
+    color: $primary;
+    margin-bottom: $space-xs;
+}
+
+.subtitle {
+    font-size: $text-lg;
     font-weight: $font-semibold;
     margin-bottom: $space-md;
+    color: $text-default;
 }
 
 .text {
     color: $text-secondary;
-    margin-bottom: $space-md;
+    margin-bottom: $space-lg;
+    font-size: $text-base;
 }
 
 .link {
-    color: $primary;
+    display: inline-block;
+    padding: $space-sm $space-md;
+    background: $primary;
+    color: #fff;
+    border-radius: $radius-md;
     text-decoration: none;
+    font-weight: $font-medium;
+    box-shadow: $shadow-sm;
+    transition: background $transition-fast;
 
     &:hover {
-        text-decoration: underline;
+        background: $primary-dark;
+        text-decoration: none;
     }
 }

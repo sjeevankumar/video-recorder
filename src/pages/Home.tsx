@@ -6,7 +6,47 @@ export default function Home() {
   return (
     <main className={styles.main}>
       <header className={styles.header}>
-        <div className={styles.logo}>MicroSass</div>
+        <div className={styles.headerBrand}>
+          <Link to="/" className={styles.brandLink} aria-label="Recordly home">
+            <svg
+              width="32"
+              height="32"
+              viewBox="0 0 40 40"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className={styles.brandIcon}
+            >
+              <rect
+                x="6"
+                y="6"
+                width="28"
+                height="28"
+                rx="8"
+                fill="var(--primary)"
+                opacity="0.12"
+              />
+              <rect
+                x="12"
+                y="12"
+                width="16"
+                height="16"
+                rx="4"
+                fill="var(--primary)"
+              />
+              <circle cx="20" cy="20" r="5" fill="var(--surface)" />
+              <rect
+                x="18"
+                y="18"
+                width="4"
+                height="4"
+                rx="1"
+                fill="var(--primary)"
+              />
+            </svg>
+            <span className={styles.brandText}>Recordly</span>
+          </Link>
+        </div>
+
         <nav className={styles.nav}>
           <Link to="/recorder">Recorder</Link>
         </nav>
@@ -20,18 +60,23 @@ export default function Home() {
           <div className={styles.heroContent}>
             <div className={styles.heroText}>
               <h1>
-                Record your screen, webcam & audio —{" "}
-                <span className={styles.highlight}>in one click</span>
+                Record Anything.{" "}
+                <span className={styles.highlight}>Share Instantly.</span>
               </h1>
+              <div className={styles.tagline}>
+                <span>
+                  One-click screen & video recording, right in your browser.
+                </span>
+              </div>
               <p>
-                Capture tutorials, meetings, and demos with a lightweight,
-                privacy-first recorder — no account needed. Start recording in
-                seconds.
+                Recordly lets you capture your screen, webcam, and audio in
+                seconds. No installs, no signups—just fast, private recording
+                and instant sharing.
               </p>
 
               <div className={styles.heroActions}>
                 <Link to="/recorder">
-                  <Button>Start recording</Button>
+                  <Button>Start Recording</Button>
                 </Link>
                 <a href="#how" className={styles.secondaryButton}>
                   How it works
@@ -45,35 +90,109 @@ export default function Home() {
                 <span className={`${styles.badge} ${styles.accent}`}>
                   ✓ Privacy-first
                 </span>
+                <span className={`${styles.badge} ${styles.danger}`}>
+                  ✓ 100% Free
+                </span>
+                <span className={`${styles.badge} ${styles.primary}`}>
+                  ✓ Works in your browser
+                </span>
               </div>
             </div>
 
-            <div className={styles.demoBox}>
-              <div className={styles.demoContainer}>
-                <div className={styles.demoText}>
-                  <div className={styles.title}>Live demo</div>
-                  <div className={styles.subtitle}>
-                    Try the recorder in the Recorder page
-                  </div>
-                </div>
-                <div className={styles.playButton}>
-                  <div className={styles.buttonBg}>
-                    <svg
-                      width="28"
-                      height="28"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path d="M8 5v14l11-7L8 5z" fill="white" />
-                    </svg>
-                  </div>
-                </div>
+            <div className={styles.heroVisual}>
+              <div className={styles.illustration}>
+                <svg
+                  width="320"
+                  height="200"
+                  viewBox="0 0 320 200"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    x="20"
+                    y="40"
+                    width="280"
+                    height="120"
+                    rx="16"
+                    fill="#fff"
+                    stroke="var(--primary)"
+                    strokeWidth="3"
+                  />
+                  <rect
+                    x="40"
+                    y="60"
+                    width="80"
+                    height="80"
+                    rx="8"
+                    fill="var(--primary)"
+                    opacity="0.08"
+                  />
+                  <rect
+                    x="140"
+                    y="60"
+                    width="140"
+                    height="40"
+                    rx="8"
+                    fill="var(--primary)"
+                    opacity="0.08"
+                  />
+                  <rect
+                    x="140"
+                    y="110"
+                    width="60"
+                    height="20"
+                    rx="6"
+                    fill="var(--primary)"
+                    opacity="0.08"
+                  />
+                  <rect
+                    x="210"
+                    y="110"
+                    width="70"
+                    height="20"
+                    rx="6"
+                    fill="var(--primary)"
+                    opacity="0.08"
+                  />
+                  <circle cx="60" cy="100" r="18" fill="var(--primary)" />
+                  <rect
+                    x="52"
+                    y="92"
+                    width="16"
+                    height="16"
+                    rx="4"
+                    fill="#fff"
+                  />
+                  <rect
+                    x="56"
+                    y="96"
+                    width="8"
+                    height="8"
+                    rx="2"
+                    fill="var(--primary)"
+                  />
+                  <rect
+                    x="260"
+                    y="70"
+                    width="24"
+                    height="8"
+                    rx="4"
+                    fill="var(--primary)"
+                    opacity="0.15"
+                  />
+                  <rect
+                    x="260"
+                    y="90"
+                    width="24"
+                    height="8"
+                    rx="4"
+                    fill="var(--primary)"
+                    opacity="0.15"
+                  />
+                </svg>
               </div>
-              <div className={styles.demoDescription}>
-                Try it: click{" "}
-                <span className={styles.highlight}>Start recording</span> to
-                open the recorder and allow your camera/mic.
+              <div className={styles.screenshotFrame}>
+                {/* Optionally, place a real screenshot here for extra realism */}
               </div>
             </div>
           </div>
@@ -84,64 +203,81 @@ export default function Home() {
         <h2 className={styles.howTitle}>How it works</h2>
         <div className={styles.howGrid}>
           <div className={`${styles.howCard} ${styles.primary}`}>
+            <div className={styles.howStep}>1</div>
             <div className={`${styles.howCardIcon} ${styles.primary}`}>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-                <path
-                  d="M5 3v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3"
+              <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+                <rect
+                  x="6"
+                  y="10"
+                  width="24"
+                  height="16"
+                  rx="4"
                   stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
+                  strokeWidth="2.5"
+                />
+                <rect
+                  x="13"
+                  y="16"
+                  width="6"
+                  height="6"
+                  rx="2"
+                  fill="currentColor"
                 />
               </svg>
             </div>
-            <h3 className={styles.howCardTitle}>Select screen</h3>
+            <h3 className={styles.howCardTitle}>Pick what to record</h3>
             <p className={styles.howCardText}>
-              Choose the window or tab you want to record and allow audio
-              capture for tabs that support it.
+              Choose your screen, window, or browser tab. No install or signup
+              needed.
             </p>
           </div>
 
           <div className={`${styles.howCard} ${styles.accent}`}>
+            <div className={styles.howStep}>2</div>
             <div className={`${styles.howCardIcon} ${styles.accent}`}>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-                <path
-                  d="M12 14a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v5a3 3 0 0 0 3 3z"
+              <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+                <circle
+                  cx="18"
+                  cy="14"
+                  r="6"
                   stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
+                  strokeWidth="2.5"
                 />
-                <path
-                  d="M19 10v4a7 7 0 0 1-14 0v-4"
+                <rect
+                  x="15"
+                  y="24"
+                  width="8"
+                  height="6"
+                  rx="2"
                   stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
+                  strokeWidth="2.5"
                 />
               </svg>
             </div>
-            <h3 className={styles.howCardTitle}>Enable mic & webcam</h3>
+            <h3 className={styles.howCardTitle}>Add mic & webcam</h3>
             <p className={styles.howCardText}>
-              Toggle the webcam to overlay your video and use your microphone to
-              record narration.
+              Enable your microphone and camera for narration and
+              picture-in-picture video.
             </p>
           </div>
 
           <div className={`${styles.howCard} ${styles.danger}`}>
+            <div className={styles.howStep}>3</div>
             <div className={`${styles.howCardIcon} ${styles.danger}`}>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-                <path
-                  d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"
+              <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+                <rect
+                  x="8"
+                  y="28"
+                  width="20"
+                  height="6"
+                  rx="2"
                   stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
+                  strokeWidth="2.5"
                 />
                 <path
-                  d="M7 10l5 3 5-3"
+                  d="M14 18l6 3 6-3"
                   stroke="currentColor"
-                  strokeWidth="1.5"
+                  strokeWidth="2.5"
                   strokeLinecap="round"
                   strokeLinejoin="round"
                 />
@@ -149,15 +285,15 @@ export default function Home() {
             </div>
             <h3 className={styles.howCardTitle}>Stop & download</h3>
             <p className={styles.howCardText}>
-              After stopping the recording, download a webm file or re-record if
-              needed.
+              Stop recording, then instantly download your video or start over
+              if you wish.
             </p>
           </div>
         </div>
       </section>
 
       <footer className={styles.footer}>
-        © {new Date().getFullYear()} MicroSass — Built with ❤️
+        © {new Date().getFullYear()} Recordly — Built with ❤️
       </footer>
     </main>
   )

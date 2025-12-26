@@ -1,4 +1,4 @@
-import { Link, Route, Routes } from "react-router-dom"
+import { Route, Routes } from "react-router-dom"
 import styles from "./App.module.scss"
 import { useTheme } from "./contexts/ThemeContext"
 import Home from "./pages/Home"
@@ -10,13 +10,6 @@ function AppContent() {
 
   return (
     <div className={styles.app} data-theme={theme}>
-      <header className={styles.header}>
-        <nav className={styles.nav}>
-          <Link to="/">Home</Link> | <Link to="/recorder">Recorder</Link>
-        </nav>
-        {/* <ThemeSwitcher /> */}
-      </header>
-
       <main className={styles.main}>
         <Routes>
           <Route path="/" element={<Home />} />
